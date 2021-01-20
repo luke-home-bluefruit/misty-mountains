@@ -8,6 +8,7 @@ tests.counter: scopetests.cpp
 	$(CXX) $(OPTIONS) \
 	scopetests.cpp \
 	../src/DummyThing.cpp \
+	../src/ClocksDriver.cpp \
 	-o tests.counter.exe
 
 .PHONY: clean

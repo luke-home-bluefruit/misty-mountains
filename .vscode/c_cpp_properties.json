@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+          "name": "Testing",
+          "includePath": [
+              "${workspaceFolder}/inc/mock"
+          ]
+        }
+    ],
+    "version": 4
+}
