@@ -5,6 +5,9 @@
 namespace Drivers
 {
 
+uint16_t ClocksDriver::m_HSI;
+
+
 void ClocksDriver::SetClockControlRegister(uint32_t data)
 {
   RCC->CR = data;
@@ -23,7 +26,7 @@ bool ClocksDriver::GetPLLReady()
 void ClocksDriver::SetPLLEnable(bool enabled)
 {
   const uint32_t maskedBits = RCC->CR & ~(1 << 25);
-  RCC->CR = maskedBits | (enabled << 25);
+  RCC->CR = maskedBits | ((enabled ? 0 : 1) << 25);
 }
 
 uint16_t ClocksDriver::GetPLLM()
@@ -53,14 +56,14 @@ uint16_t ClocksDriver::GetPLLP()
   return 0;
 }
 
-void ClocksDriver::SetHSI(uint16_t HSI)
+void ClocksDriver::SetHSI(uint32_t HSI)
 {
-  _HSI = HSI;
+  m_HSI = HSI;
 }
 
-uint16_t ClocksDriver::GetClockFrequency()
+uint32_t ClocksDriver::GetClockFrequency()
 {
-  return _HSI * (GetPLLN() / GetPLLM()) / GetPLLP();
+  return m_HSI * (GetPLLN() / GetPLLM()) / GetPLLP();
 }
 
 }

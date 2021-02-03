@@ -19,8 +19,12 @@ void dummy_thing_provides_the_ultimate_answer()
 
 void initial_clock_frequency_matches_the_default_value()
 {
-  const uint16_t expected = 1234;
-  const uint16_t actual = ClocksDriver::GetClockFrequency();
+  ClocksDriver::SetHSI(16);
+  ClocksDriver::SetClockControlRegister(0x00000083);
+  ClocksDriver::SetPLLConfigurationRegister(0x24003010);
+
+  const uint32_t expected = 16e6;
+  const uint32_t actual = ClocksDriver::GetClockFrequency();
 
   assert(expected == actual);
 }

@@ -1,5 +1,5 @@
 CXX=g++
-OPTIONS=-Wall -Wextra -g
+OPTIONS=-Wall -Wextra -g -I../inc/mock/
 
 .PHONY: all
 all: tests.counter
@@ -13,4 +13,4 @@ tests.counter: scopetests.cpp
 
 .PHONY: clean
 clean:
-	@rm tests.counter.exe
+	@rm tests.counter.exe | true

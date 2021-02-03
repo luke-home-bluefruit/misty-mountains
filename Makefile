@@ -15,5 +15,5 @@ counter: src/counter.cpp
 
 .PHONY: clean
 clean:
-	@rm counter.elf
-	@rm counter.bin
+	@rm counter.elf | true
+	@rm counter.bin | true

@@ -7,7 +7,7 @@ namespace Drivers
 class ClocksDriver
 {
 private:
-  static uint16_t _HSI;
+  static uint16_t m_HSI;
 
 public:
   static void SetClockControlRegister(uint32_t data);
@@ -20,9 +20,9 @@ public:
   static uint16_t GetPLLN();
   static uint16_t GetPLLP();
 
-  static void SetHSI(uint16_t HSI);
+  static void SetHSI(uint32_t HSI);
 
-  static uint16_t GetClockFrequency();
+  static uint32_t GetClockFrequency();
 };
 
 }
